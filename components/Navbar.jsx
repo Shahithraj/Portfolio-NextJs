@@ -85,7 +85,7 @@ const Navbar = () => {
           </div>
           <div className="border-b border-gray-300 my-4">
             <p className="py-4 w-[85%] md:w-[90%]">
-              Let's build something legendary together
+              Let&apos;s build something legendary together
             </p>
             {/* </div> */}
           </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
             </ul>
             <div className="pt-36">
               <p className="uppercase tracking-widest text-[#5651e5]">
-                Let's Connect
+                Let&apos;s Connect
               </p>
               <div className="flex justify-between items-center w-full sm:w-[80%] my-4">
                 <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
