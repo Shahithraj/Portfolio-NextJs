@@ -32,9 +32,6 @@ html {
 }
 
 .list_items:hover {
-  border-bottom:4px solid #0D7CFF;
-}
-.navigate_link:active {
   border-bottom:3px solid #0D7CFF;
 }
 
