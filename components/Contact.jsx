@@ -1,10 +1,13 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import contact from '../public/assets/contact.jpg';
 import Connect from './Connect';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {AiOutlineMail} from "react-icons/ai";
 
 const Contact = () => {
   const [query, setQuery] = useState({
@@ -25,7 +28,19 @@ const Contact = () => {
     fetch('https://getform.io/f/683e79cf-898c-401f-9b4a-138da43307b2', {
       method: 'POST',
       body: formData,
-    }).then(() => setQuery({ name: '', email: '', message: '',phone:'',subject:'' }));
+    }).then(() => {
+      setQuery({ name: '', email: '', message: '', phone: '', subject: '' });
+      toast.success(' Message sent successfully!', {
+        position: 'top-right',
+        autoClose: 5000,
+      });
+    }).catch((err) => {
+      toast.error('Something went wrong!', {
+        position: 'top-right',
+        autoClose: 5000,
+      });
+    })
+   
   };
 
   // Update inputs value
@@ -67,7 +82,11 @@ const Contact = () => {
               <div>
                 <p className="uppercase pt-8">Connect With Me</p>
                 <div className="flex items-center gap-2 py-2">
-                  <IoLogoWhatsapp />
+                  <AiOutlineMail className='mt-[4px]' />
+                  <h5>shahithr99@gmail.com</h5>
+                </div>
+                <div className="flex items-center gap-2 py-2">
+                  <IoLogoWhatsapp className='mt-[4px]' />
                   <h5>+919080203657</h5>
                 </div>
                 <div className="flex items-center justify-between py-4">
@@ -142,6 +161,7 @@ const Contact = () => {
                   Send Message
                 </button>
               </form>
+              <ToastContainer />
             </div>
           </div>
         </div>
