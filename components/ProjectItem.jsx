@@ -9,14 +9,19 @@ const ProjectItem = ({ title, desc, tech, projectUrl,git }) => {
       <p className="p-4">{desc}</p>
       <div className='flex items-center gap-8 mb-6 px-4'>
       <Link href={git}>
+      <a target="_blank">
       <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
         <FaGithub size={20} />
       </div>
+      </a>
       </Link>
       <Link href={projectUrl}>
+      <a target="_blank">
+
       <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
         <FaExternalLinkAlt className="" size={20} />
       </div>
+      </a>
       </Link>
       </div>
       <p className='px-4'>{tech}</p>

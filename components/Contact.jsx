@@ -1,14 +1,45 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import contact from '../public/assets/contact.jpg';
 import Connect from './Connect';
 import { IoLogoWhatsapp } from 'react-icons/io';
-import {HiOutlineChevronDoubleUp} from "react-icons/hi";
+import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import Link from 'next/link';
 
 const Contact = () => {
+  const [query, setQuery] = useState({
+    name: '',
+    email: '',
+    message: '',
+    subject: '',
+    phone: '',
+  });
+
+  // Form Submit function
+  const formSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    Object.entries(query).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    fetch('https://getform.io/f/683e79cf-898c-401f-9b4a-138da43307b2', {
+      method: 'POST',
+      body: formData,
+    }).then(() => setQuery({ name: '', email: '', message: '',phone:'',subject:'' }));
+  };
+
+  // Update inputs value
+  const handleParam = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setQuery((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
-    <div id='contact' className="w-full lg:h-screen py-14">
+    <div id="contact" className="w-full lg:h-screen py-14">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
         <p className="uppercase tracking-widest text-xl text-[#5651e5]">
           Contact
@@ -49,13 +80,17 @@ const Contact = () => {
           {/* right */}
           <div className="col-span-3 w-full h-auto lg:p-4 shadow-xl shadow-gray-400 rounded-xl">
             <div className="p-4">
-              <form>
+              <form onSubmit={formSubmit}>
                 <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Name</label>
                     <input
                       type="text"
+                      name="name"
+                      value={query.name}
                       className="border-2 p-3 rounded-lg flex border-gray-300 outline-none focus:outline-1"
+                      onChange={(e) => handleParam(e)}
+                      required
                     />
                   </div>
                   <div className="flex flex-col">
@@ -65,6 +100,9 @@ const Contact = () => {
                     <input
                       type="text"
                       className="border-2 p-3 rounded-lg flex border-gray-300 outline-none focus:outline-1"
+                      onChange={(e) => handleParam(e)}
+                      name="phone"
+                      value={query.phone}
                     />
                   </div>
                 </div>
@@ -73,6 +111,10 @@ const Contact = () => {
                   <input
                     type="email"
                     className="border-2 p-3 rounded-lg flex border-gray-300 outline-none focus:outline-1"
+                    onChange={(e) => handleParam(e)}
+                    name="email"
+                    value={query.email}
+                    required
                   />
                 </div>
                 <div className="flex flex-col py-2">
@@ -80,21 +122,33 @@ const Contact = () => {
                   <input
                     type="text"
                     className="border-2 p-3 rounded-lg flex border-gray-300 outline-none focus:outline-1"
+                    onChange={(e) => handleParam(e)}
+                    name="subject"
+                    value={query.subject}
                   />
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Message</label>
-                  <textarea className='border-2 p-3 rounded-lg flex border-gray-300 outline-none' rows="10" />
+                  <textarea
+                    className="border-2 p-3 rounded-lg flex border-gray-300 outline-none"
+                    rows="6"
+                    onChange={(e) => handleParam(e)}
+                    name="message"
+                    value={query.message}
+                    required
+                  />
                 </div>
-                <button className='w-full p-4 mt-4 text-gray-100 text-lg'>Send Message</button>
+                <button className="w-full p-4 mt-4 text-gray-100 text-lg">
+                  Send Message
+                </button>
               </form>
             </div>
           </div>
         </div>
-        <div className='flex justify-center py-12'>
+        <div className="flex justify-center py-12">
           <Link href="/">
-            <div className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-105 ease-in duration-300'>
-              <HiOutlineChevronDoubleUp className='text-[#5651e5]' size={30} />
+            <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-105 ease-in duration-300">
+              <HiOutlineChevronDoubleUp className="text-[#5651e5]" size={30} />
             </div>
           </Link>
         </div>
