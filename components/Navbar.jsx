@@ -98,19 +98,19 @@ console.log(asPath);
           <div className="py-4 flex flex-col">
             <ul className="uppercase flex-1">
               <Link href="/">
-                <li className={`py-4 text-sm mobile_list ${asPath == "/"}`}>Home</li>
+                <li onClick={handleNav} className={`py-4 text-sm mobile_list ${asPath == "/"}`}>Home</li>
               </Link>
               <Link href="/#about">
-                <li className={`py-4 text-sm mobile_list ${asPath == "/#about"}`}>About</li>
+                <li onClick={handleNav} className={`py-4 text-sm mobile_list ${asPath == "/#about"}`}>About</li>
               </Link>
               <Link href="/#skills">
-                <li className={`py-4 text-sm mobile_list ${asPath == "/#skills"}`}>Skills</li>
+                <li onClick={handleNav} className={`py-4 text-sm mobile_list ${asPath == "/#skills"}`}>Skills</li>
               </Link>
               <Link href="/#projects">
-                <li className={`py-4 text-sm mobile_list ${asPath == "/#projects"}`}>Projects</li>
+                <li onClick={handleNav} className={`py-4 text-sm mobile_list ${asPath == "/#projects"}`}>Projects</li>
               </Link>
               <Link href="/#contact">
-                <li className={`py-4 text-sm mobile_list ${asPath == "/#contact"}`}>Contact</li>
+                <li onClick={handleNav} className={`py-4 text-sm mobile_list ${asPath == "/#contact"}`}>Contact</li>
               </Link>
             </ul>
             <div className="pt-36">

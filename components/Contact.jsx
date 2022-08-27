@@ -82,11 +82,11 @@ const Contact = () => {
               <div>
                 <p className="uppercase pt-8">Connect With Me</p>
                 <div className="flex items-center gap-2 py-2">
-                  <AiOutlineMail className='mt-[4px]' />
+                  <AiOutlineMail className='mt-[2px]' />
                   <h5>shahithr99@gmail.com</h5>
                 </div>
                 <div className="flex items-center gap-2 py-2">
-                  <IoLogoWhatsapp className='mt-[4px]' />
+                  <IoLogoWhatsapp className='mt-[2px]' />
                   <h5>+919080203657</h5>
                 </div>
                 <div className="flex items-center justify-between py-4">
